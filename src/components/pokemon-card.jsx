@@ -1,14 +1,13 @@
-
+import FetchButton from '../components/fetch-button';
 
 const PokemonCard = () => {
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-sm">
         <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
+          <h2 className="card-title">Pokemon Name</h2>
           <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
+            A brief description will go here, hopefully.
           </p>
         </div>
         <figure>
@@ -17,9 +16,10 @@ const PokemonCard = () => {
             alt="Shoes"
           />
         </figure>
+        <FetchButton> Submit </FetchButton>
       </div>
     </>
   );
 }
 
-export default PokemonCard
+export default PokemonCard;
