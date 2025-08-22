@@ -1,23 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 
-const FetchButton = ({ children }) => {
 
-    const [pokemonData, setPokemonData] = useState();
- 
-    const handleClick = async (e) => {
+const FetchButton = ( ) => {
 
-        const request = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
-        const data = await request.json();
-       
-        setPokemonData(data)
-      console.log(pokemonData);
-    }
-   
-    
 
-     
 
 
     
