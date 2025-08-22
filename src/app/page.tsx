@@ -1,11 +1,22 @@
 "use client";
 
+
 import { useState, useEffect } from "react";
 
+interface Ability {
+  ability: {
+    name: string;
+  };
+}
+
+interface Sprite {
+  front_shiny: string;
+}
+
 const Home = () => {
-  const [pokemonName, setPokemonName] = useState([]);
-  const [abilities, setAbilities] = useState([]);
-  const [sprite, setSprite] = useState();
+  const [pokemonName, setPokemonName] = useState<string>("");
+  const [abilities, setAbilities] = useState<Ability[]>([]);
+  const [sprite, setSprite] = useState<Sprite | null>(null);
 
   const handleClick = async () => {
     const request = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
