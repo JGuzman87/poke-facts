@@ -19,7 +19,7 @@ const Home = () => {
   const [sprite, setSprite] = useState<Sprite | null>(null);
 
   const handleClick = async () => {
-    const request = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+    const request = await fetch("https://pokeapi.co/api/v2/pokemon/charizard");
     const data = await request.json();
 
     setPokemonName(data.name);

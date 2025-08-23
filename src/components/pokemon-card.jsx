@@ -26,7 +26,9 @@ const PokemonCard = ({pokemonName, abilities, sprite, handleClick}) => {
             alt="pokemon sprite"
           />
         </figure>
-        <button onClick={handleClick}> Submit </button>
+        <button className="hover:bg-gray-600 hover:text-white" onClick={handleClick}>
+          <p className="">Submit</p>
+        </button>
       </div>
     </>
   );
