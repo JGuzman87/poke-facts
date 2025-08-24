@@ -19,7 +19,7 @@ const Home = () => {
   const [sprite, setSprite] = useState<Sprite | null>(null);
 
   const handleClick = async () => {
-    const request = await fetch("https://pokeapi.co/api/v2/pokemon/charizard");
+    const request = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
     const data = await request.json();
 
     setPokemonName(data.name);
@@ -31,6 +31,7 @@ const Home = () => {
   return (
     <>
       <PokemonCard
+     
         handleClick={handleClick}
         pokemonName={pokemonName}
         abilities={abilities}

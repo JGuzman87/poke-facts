@@ -5,12 +5,12 @@ const PokemonCard = ({pokemonName, abilities, sprite, handleClick}) => {
     
   return (
     <>
-      <div className="card bg-base-100 w-96 shadow-sm">
+      <div className="card bg-base-100 w-96 shadow-sm ">
         <div className="card-body">
-          <h2 className="card-title">
+          <h2 className="card-title capitalize">
             {pokemonName ? pokemonName : "Pokemon Name"}
           </h2>
-          <ul>
+          <ul className="capitalize">
             {abilities.map((ability) => (
               <li key={ability.ability.name}>{ability.ability.name}</li>
             ))}
@@ -20,13 +20,17 @@ const PokemonCard = ({pokemonName, abilities, sprite, handleClick}) => {
           <img
             src={
               sprite
-                ? sprite.front_shiny
-                : "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                ? sprite.front_default
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
             }
             alt="pokemon sprite"
           />
+          {sprite && <img src={sprite.back_default} alt="pokemon sprite" />}
         </figure>
-        <button className="hover:bg-gray-600 hover:text-white" onClick={handleClick}>
+        <button
+          className="hover:bg-gray-600 hover:text-white"
+          onClick={handleClick}
+        >
           <p className="">Submit</p>
         </button>
       </div>
