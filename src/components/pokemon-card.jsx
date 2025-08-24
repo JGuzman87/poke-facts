@@ -7,8 +7,9 @@ const PokemonCard = ({pokemonName, abilities, sprite, handleClick}) => {
     <>
       <div className="card bg-base-100 w-96 shadow-sm ">
         <div className="card-body">
+         
           <h2 className="card-title capitalize">
-            {pokemonName ? pokemonName : "Pokemon Name"}
+            {pokemonName}
           </h2>
           <ul className="capitalize">
             {abilities.map((ability) => (
