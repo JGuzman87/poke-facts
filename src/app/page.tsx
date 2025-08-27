@@ -14,37 +14,41 @@ interface Sprite {
 }
 
 const Home = () => {
-const router = useRouter();
-  
+
+  const [input, setInput] = useState<string>('');
   const [pokemonName, setPokemonName] = useState<string>("");
   const [abilities, setAbilities] = useState<Ability[]>([]);
   const [sprite, setSprite] = useState<Sprite | null>(null);
 
 
   const handleClick = async () => {
-    const request = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-    const data = await request.json();
+  try{ const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${input.trim().toLowerCase()}`);
+    if(!response.ok) {
+      return alert('Invalid Name');
+    }
+      const data = await response.json();
 
+       setPokemonName(data.name);
+       setAbilities(data.abilities);
+       setSprite(data.sprites);
+       console.log(data);
+  }catch(error) {
+   alert("Invalid request")
+  }    
   
-    setPokemonName(data.name);
-    setAbilities(data.abilities);
-    setSprite(data.sprites);
-    console.log(data);
+ 
     
     // router.push(`/info-page/${pokemonName}`)
    
   };
 
-    const handleChange = (e) => {
-     
-    setPokemonName(e.target.value);
-    };
+  
 
 
   return (
     <>
       <label htmlFor="name">Pokemon Search 🔍:</label>
-      <input type="text" value={pokemonName} placeholder="enter name here" onChange={handleChange}></input>
+      <input type="text" value={input} placeholder="enter name here" onChange={(e) => setInput(e.target.value)} />
       <PokemonCard
         handleClick={handleClick}
         pokemonName={pokemonName}
