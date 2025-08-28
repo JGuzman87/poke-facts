@@ -22,8 +22,9 @@ const Home = () => {
 
 
   const handleClick = async () => {
+
   try{ const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${input.trim().toLowerCase()}`);
-    if(!response.ok) {
+    if(!response.ok || !input) {
       return alert('Invalid Name');
     }
       const data = await response.json();
@@ -36,6 +37,7 @@ const Home = () => {
    alert("Invalid request")
   }    
   
+  setInput('');
  
     
     // router.push(`/info-page/${pokemonName}`)
@@ -46,9 +48,18 @@ const Home = () => {
 
 
   return (
-    <>
-      <label htmlFor="name">Pokemon Search 🔍:</label>
-      <input type="text" value={input} placeholder="enter name here" onChange={(e) => setInput(e.target.value)} />
+    <> 
+      <form className="flex flex-col gap-4 p-2 bg-amber-300" onSubmit={(e) => {e.preventDefault(); handleClick()}}>
+        <label className="self-center" htmlFor="name">Pokemon Search 🔍:</label>
+        <input
+          className="bg-gray-100 w-1/2 self-center p-2"
+          type="text"
+          value={input}
+          placeholder="enter name here"
+          onChange={(e) => setInput(e.target.value)}
+          required
+        />
+      </form>
       <PokemonCard
         handleClick={handleClick}
         pokemonName={pokemonName}
